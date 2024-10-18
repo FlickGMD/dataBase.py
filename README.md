@@ -1,1 +1,1 @@
-# dataBase.py
+practica de scripting en python :)
