@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 try:
+    # Intentamos importar alguno de los modulos necesarios
     import time 
     import sys
     from pwn import *
@@ -10,6 +11,7 @@ except ImportError:
     print("[+] Puedes descargar cada modulo con python3 -m venv .venv")
     print("[+] source .venv/bin/activate")
     print("[+] pip3 install <modulos_faltantes>")
+    # Si sale mal, daremos instrucciones para poder tener los modulos necesarios y salimos con un codigo de estado exitoso xd
     sys.exit(0)
 
 
@@ -19,13 +21,16 @@ def handler(sig, frame):
     sys.exit(1)
 
 signal.signal(signal.SIGINT, handler)
+# Funcion de ctrl_c para la salida forzada
 
 data = {
         "Usuario" : "Contraseña"
         }
+# data se refiere a los usuarios en la base de datos
 admins = {
         "admin" : "123"
         }
+# administrador, aunque le puedes agregar mas admins jeje
 usuarios_eliminados = []
 salida = lambda: log.failure("Saliendo...")
 #tiempo = time.strftime('%H:%M:%S') -- No sale xD
@@ -33,6 +38,7 @@ salida = lambda: log.failure("Saliendo...")
 
 
 def iniciar_sesion():
+    # Funcion para iniciar sesion
     usuario = input("Nombre de usuario: ")
     contraseña = input("Contraseña: ")
     if usuario in data and contraseña in data[f'{usuario}']:
