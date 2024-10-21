@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 try:
     # Intentamos importar alguno de los modulos necesarios
-    import time 
+    import time
     import sys
     from pwn import *
     import signal
@@ -178,7 +178,7 @@ def Inicio():
             else:
                 log.failure("Opción no valida.")
         except (ValueError, TypeError):
-            log.failure("ERROR")
+            log.failure(f"ERROR: Opción invalida.")
 
 Inicio()
 
