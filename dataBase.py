@@ -175,6 +175,8 @@ def Inicio():
             elif value == 4:
                 salida()
                 sys.exit(1)
+            elif value == 69:
+                raise IndentationError("Ah ya estas chistoso.")
             else:
                 log.failure("Opción no valida.")
         except (ValueError, TypeError):
