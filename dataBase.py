@@ -137,7 +137,7 @@ def AdminPanel():
                             else:
                                 log.info(f"Los usuarios eliminados son {', '.join(usuarios_eliminados)}")
                         elif listado == "n" or listado == "no":
-                            None
+                            pass
                     else:
                         log.failure("El usuario indicado no esta dentro de la base datos")
                 elif some == 2:
