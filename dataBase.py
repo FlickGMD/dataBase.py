@@ -6,13 +6,15 @@ try:
     from pwn import *
     import signal
     from termcolor import colored
-except ImportError:
-    print("Modulos no encontrados.")
-    print("[+] Puedes descargar cada modulo con python3 -m venv .venv")
-    print("[+] source .venv/bin/activate")
-    print("[+] pip3 install <modulos_faltantes>")
+    from getpass import getpass
+except ImportError as e:
+    print(e)
+    #print("Modulos no encontrados.")
+    #print("[+] Puedes descargar cada modulo con python3 -m venv .venv")
+    #print("[+] source .venv/bin/activate")
+    #print("[+] pip3 install <modulos_faltantes>")
     # Si sale mal, daremos instrucciones para poder tener los modulos necesarios y salimos con un codigo de estado exitoso xd
-    sys.exit(0)
+    #sys.exit(0)
 
 
 
@@ -40,7 +42,7 @@ salida = lambda: log.failure("Saliendo...")
 def iniciar_sesion():
     # Funcion para iniciar sesion
     usuario = input("Nombre de usuario: ")
-    contraseña = input("Contraseña: ")
+    contraseña = getpass("Contraseña: ")
     if usuario in data and contraseña in data[f'{usuario}']:
         log.success("Inicio de sesión exitoso!!")
     else:
@@ -51,8 +53,8 @@ def registrarse():
     if new_user in data:
         log.failure("El nombre de usuario ya esta en uso, considera usar otro...")
         registrarse()
-    passwd_for_user = input("Contraseña: ") 
-    repeat_passwd = input("Repite la contraseña: ")
+    passwd_for_user = getpass("Contraseña: ") 
+    repeat_passwd = getpass("Repite la contraseña: ")
     if passwd_for_user != repeat_passwd:
         log.failure("Las contraseñas no pueden ser distintas")
         registrarse()
@@ -100,16 +102,16 @@ def AdminPanel():
                         usuario = input("Nombre de usuario: ")
                         if usuario in data:
                             nuevo_usuario = input("Nuevo nombre de usuario: ")
-                            contraseña = input("Contraseña: ")
+                            contraseña = getpass("Contraseña: ")
                             if contraseña in data[f'{usuario}']:
                                 data[f'{nuevo_usuario}'] = data.pop(f'{usuario}')
                                 log.success("Nombre de usuario cambiado")
                     elif passwd_or_user == 2:
                         validador_user = input("Nombre del usuario: ")
                         if validador_user in data:
-                            act_passwd = input("Contraseña actual: ")
+                            act_passwd = getpass("Contraseña actual: ")
                             if act_passwd in data[f'{validador_user}']:
-                                new_passwd = input("Nueva contraseña: ")
+                                new_passwd = getpass("Nueva contraseña: ")
                                 data[f'{validador_user}'] = f'{new_passwd}'
                                 log.success("Contraseña cambiada con exito")
                             else:
@@ -167,7 +169,7 @@ def Inicio():
                 registrarse()
             elif value == 3:
                 usuario = input("Nombre de usuario: ")
-                contraseña = input("Contraseña: ")
+                contraseña = getpass("Contraseña: ")
                 if usuario in admins and contraseña in admins[f'{usuario}']:
                     AdminPanel()
                 else:
