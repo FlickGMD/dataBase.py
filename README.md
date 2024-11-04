@@ -1,5 +1,7 @@
 **Practica de scripting con python**
 
+Una base de datos creada con python, de manera que puedes operar por consola por inputs sin necesidad de cambiar el codigo de manera constante.
+
 1.- Puedes usar debuging en caso sea necesario, en el mismo codigo lo puedes cambiar.
 ![image](https://github.com/user-attachments/assets/2aecefc3-04d8-47e8-8d88-e68ff0a6b595)
 
