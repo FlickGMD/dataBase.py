@@ -1,10 +1,17 @@
 #!/usr/bin/env python3
-
+import os
 import sys
-from pwn import *
-import signal
-from termcolor import colored
-from getpass import getpass
+try:
+    from pwn import *
+    import signal
+    from termcolor import colored
+    from getpass import getpass
+except ImportError:
+    if not os.path.exists(".venv"):
+        os.system("python3 -m venv .venv")
+        os.system("source .venv/bin/activate")
+        os.system("pip3 install termcolor")
+        os.system("pip3 install pwn")
 
 def ctrl_c(sig, frame):
     print(colored("\n\n[!] Saliendo...\n",'red'))
@@ -172,5 +179,6 @@ def Inicio():
         except (ValueError, TypeError):
             log.failure(f"ERROR: Opción invalida.")
 
-Inicio()
+if __name__ == '__main__':
+    Inicio()
 
