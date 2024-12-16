@@ -6,11 +6,11 @@ import signal
 from termcolor import colored
 from getpass import getpass
 
-def handler(sig, frame):
+def ctrl_c(sig, frame):
     print(colored("\n\n[!] Saliendo...\n",'red'))
     sys.exit(1)
 
-signal.signal(signal.SIGINT, handler)
+signal.signal(signal.SIGINT, ctrl_c)
 # Funcion de ctrl_c para la salida forzada
 
 data = {
