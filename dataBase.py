@@ -1,22 +1,10 @@
 #!/usr/bin/env python3
-try:
-    # Intentamos importar alguno de los modulos necesarios
-    import time
-    import sys
-    from pwn import *
-    import signal
-    from termcolor import colored
-    from getpass import getpass
-except ImportError as e:
-    #print(e) # -> Descomentar para debuging
-    print("Modulos no encontrados.")
-    print("[+] Puedes descargar cada modulo con python3 -m venv .venv")
-    print("[+] source .venv/bin/activate")
-    print("[+] pip3 install <modulos_faltantes>")
-    # Si sale mal, daremos instrucciones para poder tener los modulos necesarios y salimos con un codigo de estado exitoso xd
-    sys.exit(0)
 
-
+import sys
+from pwn import *
+import signal
+from termcolor import colored
+from getpass import getpass
 
 def handler(sig, frame):
     print(colored("\n\n[!] Saliendo...\n",'red'))
